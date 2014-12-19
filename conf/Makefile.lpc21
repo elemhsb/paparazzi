@@ -71,6 +71,9 @@ ASRCARM = crt0.S
 # 0 = turn off optimization. s = optimize for size.
 OPT ?= s
 
+# Debug Level set or undefine
+DEBUG=3
+
 CSTANDARD = -std=gnu99
 
 CINCS = $(INCLUDES) -I$(SRC_ARCH)/include
@@ -78,6 +81,9 @@ CINCS = $(INCLUDES) -I$(SRC_ARCH)/include
 # Compiler flags.
 CFLAGS = $(CINCS)
 CFLAGS += -O$(OPT)
+ifdef DEBUG
+CFLAGS += -g$(DEBUG)
+endif
 # CFLAGS += -malignment-traps
 CFLAGS += -Wa,-adhlns=$(OBJDIR)/$(notdir $(subst $(suffix $<),.lst,$<))
 CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
@@ -99,7 +105,11 @@ CFLAGS += $(CSTANDARD)
 CFLAGS += $($(TARGET).CFLAGS) $(USER_CFLAGS)
 
 # Assembler flags.
+ifdef DEBUG
+ASFLAGS = -Wa,-adhlns=$(OBJDIR)/$(notdir $(<:.S=.lst)),-g
+else
 ASFLAGS = -Wa,-adhlns=$(OBJDIR)/$(notdir $(<:.S=.lst))
+endif
 
 #Additional libraries.
 MATH_LIB = -lm
