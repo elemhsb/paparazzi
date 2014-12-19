@@ -45,6 +45,42 @@
 #include "peripherals/hmc58xx.h"
 #endif
 
+#ifdef IMU_HBMINI_I_VERSION_1_0
+
+#if !defined IMU_GYRO_P_CHAN & !defined IMU_GYRO_Q_CHAN & !defined IMU_GYRO_R_CHAN
+#define IMU_GYRO_P_CHAN  3
+#define IMU_GYRO_Q_CHAN  4
+#define IMU_GYRO_R_CHAN  5
+#define IMU_GYRO_TEMP_CHAN 6
+#endif
+#if !defined IMU_ACCEL_X_CHAN & !defined IMU_ACCEL_Y_CHAN & !defined IMU_ACCEL_Z_CHAN
+#define IMU_ACCEL_X_CHAN 0
+#define IMU_ACCEL_Y_CHAN 1
+#define IMU_ACCEL_Z_CHAN 2
+#endif
+#if !defined IMU_MAG_X_CHAN & !defined IMU_MAG_Y_CHAN & !defined IMU_MAG_Z_CHAN
+#define IMU_MAG_X_CHAN   2
+#define IMU_MAG_Y_CHAN   0
+#define IMU_MAG_Z_CHAN   1
+#endif
+
+#if !defined IMU_GYRO_P_SIGN & !defined IMU_GYRO_Q_SIGN & !defined IMU_GYRO_R_SIGN
+#define IMU_GYRO_P_SIGN   -1
+#define IMU_GYRO_Q_SIGN    1
+#define IMU_GYRO_R_SIGN   -1
+#endif
+#if !defined IMU_ACCEL_X_SIGN & !defined IMU_ACCEL_Y_SIGN & !defined IMU_ACCEL_Z_SIGN
+#define IMU_ACCEL_X_SIGN 1
+#define IMU_ACCEL_Y_SIGN -1
+#define IMU_ACCEL_Z_SIGN -1
+#endif
+#if !defined IMU_MAG_X_SIGN & !defined IMU_MAG_Y_SIGN & !defined IMU_MAG_Z_SIGN
+#define IMU_MAG_X_SIGN   -1
+#define IMU_MAG_Y_SIGN   -1
+#define IMU_MAG_Z_SIGN   -1
+#endif
+
+#endif /* IMU_HBMINI_I_VERSION_1_0 */
 #ifdef IMU_B2_VERSION_1_0
 /* Default IMU b2 sensors connection */
 #if !defined IMU_GYRO_P_CHAN & !defined IMU_GYRO_Q_CHAN & !defined IMU_GYRO_R_CHAN
@@ -223,8 +259,12 @@ static inline void ImuMagEvent(void (* _mag_handler)(void))
 }
 #else
 #define ImuMagEvent(_mag_handler) {}
+#define ImuScaleMag(_imu) {}
 #endif
 
+#ifndef IMU_GYRO_TEMP_CHAN
+#define IMU_GYRO_TEMP_CHAN 0
+#endif // IMU_GYRO_TEMP_CHAN
 
 static inline void ImuEvent(void (* _gyro_handler)(void), void (* _accel_handler)(void),
                             void (* _mag_handler)(void))
@@ -234,6 +274,8 @@ static inline void ImuEvent(void (* _gyro_handler)(void), void (* _accel_handler
     imu.gyro_unscaled.p  = max1168_values[IMU_GYRO_P_CHAN];
     imu.gyro_unscaled.q  = max1168_values[IMU_GYRO_Q_CHAN];
     imu.gyro_unscaled.r  = max1168_values[IMU_GYRO_R_CHAN];
+    imu.temp_unscaled    = max1168_values[IMU_GYRO_TEMP_CHAN];
+    imu.temp             = 373; //FIXME calculation of temp in grad celsius * 10
     imu.accel_unscaled.x = max1168_values[IMU_ACCEL_X_CHAN];
     imu.accel_unscaled.y = max1168_values[IMU_ACCEL_Y_CHAN];
     imu.accel_unscaled.z = max1168_values[IMU_ACCEL_Z_CHAN];

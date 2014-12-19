@@ -1,6 +1,7 @@
 #ifndef CONFIG_HB_V1_1_H
 #define CONFIG_HB_V1_1_H
 
+#pragma message "HBmini17 h file."
 /* Master oscillator freq.       */
 #define FOSC (12000000)
 
@@ -17,18 +18,39 @@
 /* Peripheral bus clock freq. */
 #define PCLK (CCLK / PBSD_VAL)
 
-/* high activ leds */
-#ifndef INVERTED_LEDS
-#define INVERTED_LEDS 1
+/* Onboard LEDs */
+/* led 1 and led 2 are not seperate leds, but leds indicating the power switch status */
+
+#ifndef USE_LED_1
+#define USE_LED_1 1
 #endif
+#define LED_1_BANK 1
+#define LED_1_PIN 18
 
-/* power switch status */
-#define POWER_SWITCH_GPIO GPIOB,GPIO18
-#define POWER_SWITCH_2_GPIO GPIOB,GPIO19
+#ifndef USE_LED_2
+#define USE_LED_2 1
+#endif
+#define LED_2_BANK 1
+#define LED_2_PIN 19
 
-/* buzzer and cam switch */
-#define BUZZER_GPIO GPIOB,GPIO20
-#define CAM_SWITCH_GPIO GPIOB,GPIO25
+#define POWER_SWITCH_LED 1
+#define POWER_SWITCH_2_LED 2
+
+/* there are no actual leds 3 and 4, these defines are just to conveniently switch the buzzer and the cam switch */
+#ifndef USE_LED_3
+#define USE_LED_3 1
+#endif
+#define LED_3_BANK 1
+#define LED_3_PIN 20
+
+#ifndef USE_LED_4
+#define USE_LED_4 1
+#endif
+#define LED_4_BANK 1
+#define LED_4_PIN 25
+
+#define BUZZER_LED 3
+#define CAM_SWITCH_LED 4
 
 /* P0.22 aka MAT0.0  */
 #define SERVO_CLOCK_PIN  22
@@ -53,7 +75,7 @@
 
 /* IR3 */
 #define ADC_0 AdcBank0(3)
-#if USE_ADC_0
+#ifdef USE_ADC_0
 #ifndef USE_AD0
 #define USE_AD0
 #endif
@@ -62,7 +84,7 @@
 
 /* IR2 */
 #define ADC_1 AdcBank0(2)
-#if USE_ADC_1
+#ifdef USE_ADC_1
 #ifndef USE_AD0
 #define USE_AD0
 #endif
@@ -71,7 +93,7 @@
 
 /* IR1 */
 #define ADC_2 AdcBank0(1)
-#if USE_ADC_2
+#ifdef USE_ADC_2
 #ifndef USE_AD0
 #define USE_AD0
 #endif
@@ -81,7 +103,7 @@
 
 /* ADC2 on ANALOG connector */
 #define ADC_3 AdcBank1(2)
-#if USE_ADC_3
+#ifdef USE_ADC_3
 #ifndef USE_AD1
 #define USE_AD1
 #endif
@@ -90,7 +112,7 @@
 
 /* ADC3 on ANALOG connector */
 #define ADC_4 AdcBank1(3)
-#if USE_ADC_4
+#ifdef USE_ADC_4
 #ifndef USE_AD1
 #define USE_AD1
 #endif
@@ -99,7 +121,7 @@
 
 /* ADC4 on ANALOG connector */
 #define ADC_5 AdcBank1(4)
-#if USE_ADC_5
+#ifdef USE_ADC_5
 #ifndef USE_AD1
 #define USE_AD1
 #endif

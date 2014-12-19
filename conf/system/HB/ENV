@@ -1,0 +1,31 @@
+#!source-it-with:_._./ENV
+
+export PAPARAZZI_HOME=`pwd`;
+export PAPARAZZI_SRC=$PAPARAZZI_HOME;
+
+export EDITOR=gedit
+
+export LD_LIBRARY_PATH=/usr/lib:/lib:/opt/jsbsim/lib
+export LANG=C
+export LC_COLLATE=C
+
+export MANPATH=$MANPATH:/opt/paparazzi/arm-multilib/share/man
+
+if [ "$AIRCRAFT" = "" ] ; then
+	# select predefined AIRCRAFT
+#	export AIRCRAFT=F_HBMINI_V2_FUNJET
+#       export AIRCRAFT=F_HBMINI_V2_MPU6000
+#	export AIRCRAFT=R_HBMINI_V2_MAX1168
+	export AIRCRAFT=R_HBMINI_V2_MPU6000
+
+	# set debugging link to act. aircraft
+	mkdir -p $PAPARAZZI_HOME/var
+	rm -f $PAPARAZZI_HOME/var/current
+	ln -s $AIRCRAFT $PAPARAZZI_HOME/var/current
+	
+	# add bin/ to PATH
+	export PATH=/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH
+fi
+
+echo PAPARAZZI_HOME = "$PAPARAZZI_HOME"
+echo AIRCRAFT = "$AIRCRAFT"

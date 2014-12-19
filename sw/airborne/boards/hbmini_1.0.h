@@ -17,6 +17,11 @@
 /* Peripheral bus clock freq. */
 #define PCLK (CCLK / PBSD_VAL)
 
+/* high activ leds */
+#ifndef INVERTED_LEDS
+#define INVERTED_LEDS 1
+#endif
+
 /* Onboard LEDs */
 #ifndef USE_LED_1
 #define USE_LED_1 1

@@ -19,6 +19,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+ /* 2014-12 temp added Heinrich Warmers */
+
 /**
  * @file peripherals/mpu60x0_spi.h
  *
@@ -62,6 +64,7 @@ struct Mpu60x0_Spi {
     struct Int16Rates rates;          ///< rates data as angular rates in gyro coordinate system
     int16_t value[3];                 ///< rates data values accessible by channel index
   } data_rates;
+  int16_t temp;                       ///< raw temp data for gyro drift compensation
   uint8_t data_ext[MPU60X0_BUFFER_EXT_LEN];
   struct Mpu60x0Config config;
   enum Mpu60x0SpiSlaveInitStatus slave_init_status;

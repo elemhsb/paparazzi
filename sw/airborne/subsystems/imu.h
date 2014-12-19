@@ -19,6 +19,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+/* 2014-12 Gyro/accel temperture compensation Heinrich Warmers */
+
 /**
  * @file subsystems/imu.h
  * Inertial Measurement Unit interface.
@@ -40,6 +42,7 @@ extern void imu_periodic(void);
 /** abstract IMU interface providing fixed point interface  */
 struct Imu {
   struct Int32Rates gyro;             ///< gyroscope measurements in rad/s in BFP with #INT32_RATE_FRAC
+  int32_t temp;                        ///< gyroscope temperature
   struct Int32Vect3 accel;            ///< accelerometer measurements in m/s^2 in BFP with #INT32_ACCEL_FRAC
   struct Int32Vect3 mag;              ///< magnetometer measurements scaled to 1 in BFP with #INT32_MAG_FRAC
   struct Int32Rates gyro_prev;        ///< previous gyroscope measurements
@@ -48,6 +51,7 @@ struct Imu {
   struct Int32Vect3 accel_neutral;    ///< accelerometer bias
   struct Int32Vect3 mag_neutral;      ///< magnetometer neutral readings (bias)
   struct Int32Rates gyro_unscaled;    ///< unscaled gyroscope measurements
+  int32_t temp_unscaled;              ///< unscaled gyroscope temperature
   struct Int32Vect3 accel_unscaled;   ///< unscaled accelerometer measurements
   struct Int32Vect3 mag_unscaled;     ///< unscaled magnetometer measurements
   struct OrientationReps body_to_imu; ///< rotation from body to imu frame
@@ -61,6 +65,8 @@ struct Imu {
 /** abstract IMU interface providing floating point interface  */
 struct ImuFloat {
   struct FloatRates   gyro;
+  float  			  temp;
+  float				  temp_unscaled;
   struct FloatVect3   accel;
   struct FloatVect3   mag;
   struct FloatRates   gyro_prev;
@@ -124,6 +130,5 @@ extern void imu_scale_mag(struct Imu *_imu);
 #define IMU_MAG_Y_SIGN 1
 #define IMU_MAG_Z_SIGN 1
 #endif
-
 
 #endif /* IMU_H */

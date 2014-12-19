@@ -130,11 +130,38 @@ tid_t baro_tid;          ///< id for baro_periodic() timer
 #endif
 
 #ifndef SITL
+#if defined POSITION_LIGHT_LED
+PRINT_CONFIG_VAR(INVERTED_LEDS)
+PRINT_CONFIG_VAR(POSITION_LIGHT_LED)
+inline void position_light( void );
+void position_light( void ) {
+  static uint32_t count = 0;
+  // position light blinking
+  if ( !(count++ % 8000) ) {
+    if( count < 40000) {
+      LED_TOGGLE(POSITION_LIGHT_LED);
+    } else {
+      if (count >= 100000) {
+        count = 1;
+        LED_OFF(POSITION_LIGHT_LED);
+      }
+    }
+  }
+}
+#else
+#define position_light(x) {}
+#endif // POSITION_LIGHT_LED
+
 int main(void)
 {
   main_init();
 
-  while (1) {
+  // endless main loop
+  while (1)
+  {
+    // position light shows that main routine run
+    position_light();
+    // action routines
     handle_periodic_tasks();
     main_event();
   }
