@@ -52,7 +52,8 @@ PRINT_CONFIG_MSG("LOW PASS FILTER ON GYRO RATES")
 #endif
 
 #if USE_MAGNETOMETER && AHRS_USE_GPS_HEADING
-#warning "Using both magnetometer and GPS course to update heading. Probably better to configure USE_MAGNETOMETER=0 if you want to use GPS course."
+// #warning
+#pragma message "Using both magnetometer and GPS course to update heading. Probably better to configure USE_MAGNETOMETER=0 if you want to use GPS course."
 #endif
 
 #if !USE_MAGNETOMETER && !AHRS_USE_GPS_HEADING

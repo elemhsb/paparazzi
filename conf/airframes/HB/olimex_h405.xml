@@ -10,7 +10,7 @@
     <define name="USE_I2C1"/>
     <define name="USE_I2C2"/>
     <!--define name="AGR_CLIMB"/-->
-    <define name="ALT_KALMAN"/>
+<!--      <define name="ALT_KALMAN"/> -->
     <!--define name="LOITER_TRIM"/-->
     <!--define name="PITCH_TRIM"/-->
     <define name="USE_GYRO_PITCH_RATE"/>
@@ -48,6 +48,7 @@ subsystems/imu/imu_drotek_10dof_v2.c:65:1: note: #pragma message: Config: DROTEK
         <!-- olri <subsystem name="ahrs" type="float_dcm"> -->
         <subsystem name="ahrs" type="int_cmpl_quat">
 		<define name="USE_MAGNETOMETER" value="1"/>
+<!--  		<define name="AHRS_USE_GPS_HEADING" value="0" /> -->
 		<define name="USE_MAGNETOMETER_ONGROUND" value="0"/>
         </subsystem>
 	<subsystem name="ins" type="alt_float"/>
@@ -211,7 +212,7 @@ olri 20150115 -->
     <define name="NOMINAL_AIRSPEED" value="15." unit="m/s"/>
     <define name="CARROT" value="5." unit="s"/>
     <define name="KILL_MODE_DISTANCE" value="(1.5*MAX_DIST_FROM_HOME)"/>
-    <define name="ALT_KALMAN_ENABLED" value="TRUE"/>
+<!--     <define name="ALT_KALMAN_ENABLED" value="TRUE"/> -->
 
     <define name="TRIGGER_DELAY" value="1."/>
     <define name="DEFAULT_CIRCLE_RADIUS" value="80."/>
