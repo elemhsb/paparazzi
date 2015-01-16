@@ -20,6 +20,28 @@
    gui_color="#3fff323842f4"
   />
   <aircraft
+   name="HB_Apogee"
+   ac_id="6"
+   airframe="airframes/ENAC/fixed-wing/apogee.xml"
+   radio="radios/cockpitSX.xml"
+   telemetry="telemetry/default_fixedwing.xml"
+   flight_plan="flight_plans/basic.xml"
+   settings="settings/fixedwing_basic.xml"
+   settings_modules="modules/meteo_france_DAQ.xml"
+   gui_color="blue"
+  />
+  <aircraft
+   name="HB_OlimexProbe"
+   ac_id="5"
+   airframe="airframes/HB/olimex_h405.xml"
+   radio="radios/HB/cockpitSX1.xml"
+   telemetry="telemetry/default_fixedwing_imu.xml"
+   flight_plan="flight_plans/basic.xml"
+   settings="settings/fixedwing_basic.xml"
+   settings_modules="[modules/gps_ubx_ucenter.xml]"
+   gui_color="white"
+  />
+  <aircraft
    name="R_HBMINI_V2_MAX1168"
    ac_id="2"
    airframe="airframes/HB/rotor/r_hbmini_v2_max1168.xml"
