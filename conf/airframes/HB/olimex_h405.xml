@@ -27,6 +27,7 @@
     <subsystem name="telemetry" type="transparent"/>
 	<configure name="MODEM_BAUD" value="B57600"/>
 	<configure name="MODEM_PORT" value="UART4"/>
+    <subsystem name="sdlog"/>
 
 
     <!-- Actuators are automatically chosen according to board-->
