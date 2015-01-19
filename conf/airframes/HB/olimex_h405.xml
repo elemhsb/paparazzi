@@ -28,6 +28,8 @@
 	<configure name="MODEM_BAUD" value="B57600"/>
 	<configure name="MODEM_PORT" value="UART4"/>
     <subsystem name="sdlog"/>
+    <define name="LOG_RAW_GPS" value="1"/>
+    <define name="LOG_PROCESS_STATE" value="1"/>
 
 
     <!-- Actuators are automatically chosen according to board-->

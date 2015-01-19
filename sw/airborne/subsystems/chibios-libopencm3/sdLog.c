@@ -189,7 +189,7 @@ SdioError sdLogWriteByte (FIL *fileObject, const uint8_t value)
 
 
 
-/* enregistrer les fichiers ouverts de manière à les fermer
+/* enregistrer les fichiers ouverts de maniere a les fermer
    si necessaire
    */
 static WORKING_AREA(waThdSdLog, 2048);

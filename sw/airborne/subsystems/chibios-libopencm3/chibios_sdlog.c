@@ -94,7 +94,7 @@ bool_t chibios_logInit(const bool_t binaryFile)
     goto error;
 
 #if LOG_PROCESS_STATE
-  if (sdLogOpenLog (&processLogFile, PROCESS_LOG_NAME) != SDLOG_OK)
+  if (sdLogOpenLog (&processLogFile, PPRZ_LOG_DIR, PROCESS_LOG_NAME) != SDLOG_OK)
     goto error;
 #endif
 
@@ -150,10 +150,10 @@ static msg_t batterySurveyThd(void *arg)
   We have to use a 2 stage system and trigger a pendSV isr that is directly managed
   by chibios
 
-  ° if in the future we have more than one pprz(ocm3) isr which have to call
+  * if in the future we have more than one pprz(ocm3) isr which have to call
     chibios api, we will need to route the pendSV isr to the right isr routine
 
-  ° all theses problems will vanish when we will use a chibios hal
+  * all theses problems will vanish when we will use a chibios hal
  */
 static void  powerOutageIsr (void)
 {
