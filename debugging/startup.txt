@@ -1,0 +1,2 @@
+monitor flash write_image  ${workspace_loc:/elemhsb-paparazzi/var/aircrafts/HB_OlimexProbe/ap/ap.elf} 0x08000000 elf
+

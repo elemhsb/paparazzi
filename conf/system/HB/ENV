@@ -1,7 +1,8 @@
+#
 #!source-it-with:_._./ENV
 
-export PAPARAZZI_HOME=`pwd`;
-export PAPARAZZI_SRC=$PAPARAZZI_HOME;
+export PAPARAZZI_HOME=$(pwd)
+export PAPARAZZI_SRC="$PAPARAZZI_HOME"
 
 export EDITOR=gedit
 
@@ -17,14 +18,15 @@ if [ "$AIRCRAFT" = "" ] ; then
 #       export AIRCRAFT=F_HBMINI_V2_MPU6000
 #	export AIRCRAFT=R_HBMINI_V2_MAX1168
 	export AIRCRAFT=R_HBMINI_V2_MPU6000
+	export AIRCRAFT=HB_OlimexProbe
 
 	# set debugging link to act. aircraft
-	mkdir -p $PAPARAZZI_HOME/var
-	rm -f $PAPARAZZI_HOME/var/current
-	ln -s $AIRCRAFT $PAPARAZZI_HOME/var/current
+	mkdir -p "$PAPARAZZI_HOME"/var
+	rm -f "$PAPARAZZI_HOME"/var/current
+	ln -s aircraft/"$AIRCRAFT" "$PAPARAZZI_HOME"/var/current
 	
 	# add bin/ to PATH
-	export PATH=/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH
+	export PATH="/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH"
 fi
 
 echo PAPARAZZI_HOME = "$PAPARAZZI_HOME"

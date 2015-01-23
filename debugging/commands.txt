@@ -1,0 +1,8 @@
+target remote localhost:3333
+monitor init
+monitor reset halt
+monitor flash write_image erase /home/riesener/work/gits/warmers/forschung/elemhsb-paparazzi/var/aircrafts/HB_OlimexProbe/ap/ap.elf
+monitor sleep 2000
+monitor reset halt
+monitor reset resume
+
