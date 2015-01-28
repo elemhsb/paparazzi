@@ -1,6 +1,6 @@
 #!/bin/sh -eu
 
-aptitude -q0 install -y smbfs qt4-dev-tools
+sudo apt-get -q0 install -y smbfs
 
 echo done.
 exit 0
