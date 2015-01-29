@@ -25,8 +25,9 @@ if [ "$AIRCRAFT" = "" ] ; then
 	ln -s aircraft/"$AIRCRAFT" "$PAPARAZZI_HOME"/var/current
 	
 	# add bin/ to PATH
-	export PATH="/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH"
-	export PATH=/opt/arm/gcc-arm-none-eabi-4_7-2013q3/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
+	#export PATH="/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH"
+	#export PATH=/opt/arm/gcc-arm-none-eabi-4_7-2013q3/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
+	export PATH=/opt/arm/gcc-arm-none-eabi-4_9-2014q4/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
 fi
 
 echo PATH = "$PATH"
