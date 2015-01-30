@@ -11,6 +11,7 @@ git clone http://repo.or.cz/openocd.git openocd-openocd
     sudo make install
 )
 
+rm -rf openocd-openocd
 
 echo done.
 exit 0

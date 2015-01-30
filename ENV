@@ -9,26 +9,27 @@ export LD_LIBRARY_PATH=/usr/lib:/lib:/opt/jsbsim/lib
 export LANG=C
 export LC_COLLATE=C
 
-export MANPATH=$MANPATH:/opt/paparazzi/arm-multilib/share/man
+export MANPATH=/opt/local/man:/opt/arm/current/man:/usr/share/man:/opt/paparazzi/arm-multilib/share/man
 
 if [ "$AIRCRAFT" = "" ] ; then
 	# select predefined AIRCRAFT
 #	export AIRCRAFT=F_HBMINI_V2_FUNJET
 #       export AIRCRAFT=F_HBMINI_V2_MPU6000
 #	export AIRCRAFT=R_HBMINI_V2_MAX1168
-	export AIRCRAFT=R_HBMINI_V2_MPU6000
+#	export AIRCRAFT=R_HBMINI_V2_MPU6000
 	export AIRCRAFT=HB_OlimexProbe
 
 	# set debugging link to act. aircraft
 	mkdir -p "$PAPARAZZI_HOME"/var
 	rm -f "$PAPARAZZI_HOME"/var/current
 	ln -s aircraft/"$AIRCRAFT" "$PAPARAZZI_HOME"/var/current
-	
-	# add bin/ to PATH
-	#export PATH="/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH"
-	#export PATH=/opt/arm/gcc-arm-none-eabi-4_7-2013q3/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
-	export PATH=/opt/arm/gcc-arm-none-eabi-4_9-2014q4/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
 fi
+	
+# add bin/ to PATH
+#export PATH="/opt/paparazzi/arm-multilib/bin:$PAPARAZZI_HOME/bin:$PATH"
+#export PATH=/opt/arm/gcc-arm-none-eabi-4_7-2013q3/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
+export PATH=/opt/arm/gcc-arm-none-eabi-4_8-2014q3/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
+#export PATH=/opt/arm/gcc-arm-none-eabi-4_9-2014q4/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/bin
 
 echo PATH = "$PATH"
 echo PAPARAZZI_HOME = "$PAPARAZZI_HOME"
