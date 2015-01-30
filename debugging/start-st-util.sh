@@ -4,6 +4,7 @@
 (
     killall st-util;
     sleep .5
-    texane-stlink/gdbserver/st-util -v &
+    # texane-stlink/gdbserver/st-util -v &
+    st-util -v &
     sleep .5
 )

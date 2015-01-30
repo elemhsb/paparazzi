@@ -6,6 +6,7 @@ mv qstlink2 vedder-qstlink2
 (
     cd vedder-qstlink2
     qmake-qt4
+    make
 )
 
 echo done.

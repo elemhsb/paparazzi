@@ -1,0 +1,13 @@
+dfu-util 0.5
+
+(C) 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
+(C) 2010-2011 Tormod Volden (DfuSe support)
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+
+dfu-util does currently only support DFU version 1.0
+
+Found Runtime: [0489:e00d] devnum=0, cfg=1, intf=3, alt=0, name="UNDEFINED"
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=0, name="@Internal Flash  /0x08000000/04*016Kg,01*064Kg,07*128Kg"
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=1, name="@Option Bytes  /0x1FFFC000/01*016 e"
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=2, name="@OTP Memory /0x1FFF7800/01*512 e,01*016 e"
+Found DFU: [0483:df11] devnum=0, cfg=1, intf=0, alt=3, name="@Device Feature/0xFFFF0000/01*004 e"
