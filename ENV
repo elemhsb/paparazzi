@@ -21,8 +21,8 @@ if [ "$AIRCRAFT" = "" ] ; then
 
 	# set debugging link to act. aircraft
 	mkdir -p "$PAPARAZZI_HOME"/var
-	rm -f "$PAPARAZZI_HOME"/var/current
-	ln -s aircraft/"$AIRCRAFT" "$PAPARAZZI_HOME"/var/current
+	rm -f "$PAPARAZZI_HOME"/var/aircrafts/current
+	ln -s "$AIRCRAFT" "$PAPARAZZI_HOME"/var/aircrafts/current
 fi
 	
 # add bin/ to PATH
