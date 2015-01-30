@@ -23,7 +23,8 @@ $(TARGET).MAKEFILE = chibios-libopencm3
 
 # default flash mode is via usb dfu bootloader
 # possibilities: DFU-UTIL, SWD, STLINK
-FLASH_MODE ?= DFU-UTIL
+# possibilities: DFU, DFU-UTIL, SWD, JTAG, JTAG_BMP, STLINK, SERIAL
+FLASH_MODE ?= STLINK
 
 #
 # default LED configuration
