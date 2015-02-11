@@ -1,0 +1,15 @@
+<!DOCTYPE module SYSTEM "module.dtd">
+
+<module name="meteo_logger" dir="meteo">
+  <doc>
+    <description>collect ins, gps, meteologie data, hires time and log it on sd-card</description>
+  </doc>
+  <header>
+    <file name="meteo_logger.h"/>
+  </header>
+  <init fun="meteo_logger_init()"/>
+  <periodic fun="meteo_logger_periodic()" freq="200" start="meteo_logger_periodic_start()" stop="meteo_logger_periodic_stop()" autorun="TRUE"/>
+  <makefile target="ap">
+    <file name="meteo_logger.c"/>
+  </makefile>
+</module>

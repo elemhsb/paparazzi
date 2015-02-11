@@ -6,6 +6,8 @@
 
 <airframe name="HB_OLIMEX_H405">
 
+
+
   <firmware name="fixedwing">
     <define name="USE_I2C1"/>
     <define name="USE_I2C2"/>
@@ -83,9 +85,13 @@ subsystems/imu/imu_drotek_10dof_v2.c:65:1: note: #pragma message: Config: DROTEK
 		<!-- olri
 		<define name="SENSOR_SYNC_SEND"/>
 		 olri -->
-</load>
-<load name="gps_ubx_ucenter.xml"/>
-	
+	</load>
+	<load name="gps_ubx_ucenter.xml"/>
+	<load name="extra_dl.xml">
+        	<configure name="EXTRA_DL_PORT" value="UART6"/>
+      		<configure name="EXTRA_DL_BAUD" value="B57600"/>
+    	</load>
+	<load name="meteo_logger.xml"/>
 
 </modules>
  
