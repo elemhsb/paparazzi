@@ -1,5 +1,6 @@
 #!/bin/sh
     killall openocd;
+    killall telnet;
 
 (
     killall st-util;

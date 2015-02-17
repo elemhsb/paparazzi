@@ -3,12 +3,24 @@
 <module name="meteo_logger" dir="meteo">
   <doc>
     <description>collect ins, gps, meteologie data, hires time and log it on sd-card</description>
+    <section name="METEO_LOGGER">
+      <define name="MS_PRESSURE_OFFSET" value="0" description="Offset in ADC of the absolute pressure sensor"/>
+      <define name="MS_PRESSURE_SCALE" value="1." description="Scale factor of the absolute pressure sensor"/>
+      <define name="MS_TEMPERATURE_OFFSET" value="0" description="Offset in ADC of the  temperature sensor"/>
+      <define name="MS_TEMPERATURE_SCALE" value="1." description="Scale factor of the temperature sensor"/>
+      <define name="MS_HUMIDITY_OFFSET" value="0" description="Offset in micro seconds of the humidity sensor"/>
+      <define name="MS_HUMIDITY_SCALE" value="1." description="Scale factor of the pressure sensor"/>
+      <define name="MS_DIFF_PRESSURE_OFFSET" value="0" description="Offset in ADC of the differential pressure sensor"/>
+      <define name="MS_DIFF_PRESSURE_SCALE" value="1." description="Scale factor of the differential pressure sensor"/>
+      <define name="LOG_ML" value="1" description="Log data on SD card (ascii format, raw Probe data + GPS data)"/>
+      <define name="SEND_ML" value="FALSE" description="Send data over telemetry (PAYLOAD_FLOAT message, scaled PTU data)"/>
+    </section>
   </doc>
   <header>
     <file name="meteo_logger.h"/>
   </header>
   <init fun="meteo_logger_init()"/>
-  <periodic fun="meteo_logger_periodic()" freq="200" start="meteo_logger_periodic_start()" stop="meteo_logger_periodic_stop()" autorun="TRUE"/>
+  <periodic fun="meteo_logger_periodic()" freq="100" start="meteo_logger_periodic_start()" stop="meteo_logger_periodic_stop()" autorun="TRUE"/>
   <makefile target="ap">
     <file name="meteo_logger.c"/>
   </makefile>

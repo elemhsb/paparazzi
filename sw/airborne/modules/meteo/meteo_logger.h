@@ -31,6 +31,11 @@
 #include "mcu_periph/gpio.h"
 #include "generated/airframe.h"
 
+struct MeteoLogger {
+	int cnt;
+	int cnt1;
+};
+
 void meteo_logger_init( void );
 void meteo_logger_periodic( void );
 void meteo_logger_periodic_start( void );

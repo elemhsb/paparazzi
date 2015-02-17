@@ -25,8 +25,6 @@
 
 #include "modules/meteo/meteo_logger.h"
 
-#include "std.h"
-
 #include "state.h"
 #include "autopilot.h"
 #include "subsystems/datalink/datalink.h"
@@ -37,18 +35,48 @@
 #include "subsystems/gps.h"
 #include "modules/datalink/extra_pprz_dl.h"
 
+#define LOG_ML 1
+
+/** General structure */
+struct MeteoLogger meteo_logger;
+
+static bool_t log_started;
+static int conter=0;
+
 /**
  *
  */
 void  meteo_logger_init() {
-
+	  log_started = FALSE;
 }
 
 /**
  *
  */
 void  meteo_logger_periodic() {
-
+#if LOG_ML
+  if (pprzLogFile.fs != NULL) {
+    if (!log_started) {
+      sdLogWriteLog(&pprzLogFile,
+                    "autopilot flight time\n");
+      log_started = TRUE;
+    } else {
+/*      sdLogWriteLog(&pprzLogFile, "%d %d %d %d %d %d %d %d %d %d %d %d %d\n",
+                    meteo_logger.pressure.data, meteo_logger.temperature.data,
+                    meteo_logger.humidity_period, meteo_logger.diff_pressure.data,
+                    gps.fix, gps.tow, gps.week,
+                    gps.lla_pos.lat, gps.lla_pos.lon, gps.hmsl,
+                    gps.gspeed, gps.course, -gps.ned_vel.z);
+*/
+     conter++;
+    	sdLogWriteLog(&pprzLogFile,
+                      "%d %d %ld\n",
+                      autopilot_flight_time,-gps.ned_vel.z,conter);
+       }
+  }
+#else
+#pragma message "LOG_ML not SET"
+#endif
 }
 
 /**

@@ -30,9 +30,9 @@
 	<configure name="MODEM_BAUD" value="B57600"/>
 	<configure name="MODEM_PORT" value="UART4"/>
     <subsystem name="sdlog"/>
-    <define name="LOG_RAW_GPS" value="1"/>
+<!--    <define name="LOG_RAW_GPS" value="1"/>
     <define name="LOG_PROCESS_STATE" value="1"/>
-
+-->
 
     <!-- Actuators are automatically chosen according to board-->
 <!--
@@ -91,8 +91,10 @@ subsystems/imu/imu_drotek_10dof_v2.c:65:1: note: #pragma message: Config: DROTEK
         	<configure name="EXTRA_DL_PORT" value="UART6"/>
       		<configure name="EXTRA_DL_BAUD" value="B57600"/>
     	</load>
-	<load name="meteo_logger.xml"/>
-
+	<load name="meteo_logger.xml">
+		<configure name="LOG_ML" value="1"/>
+	</load>
+    <!-- <load name="meteo_france_DAQ.xml"/> -->
 </modules>
  
   <section name="IMU" prefix="IMU_">
