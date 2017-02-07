@@ -1,0 +1,26 @@
+MPU6000: GYRO temperature compensation:
+- imu_hbimu.c calculatates gyro temperature from raw values
+- correction values and routines in subsystems/imu.h (TREF, DXG, DYG, DZG)
+- messages.xml adds imu.temp and imu.temp_unscaled to telemetry messages
+
+
+Rotorcraft main POSITION LIGHT
+
+LED
+- LED_9 new
+- INVERTED_LEDS
+
+BAT_CHECKER
+- MODS ...
+
+AIRSPEED_AMSYS_ADDR
+- #ifndef ...
+
+baro_bmp.c:
+- powf( value >= 0 )
+
+
+
+
+
+  

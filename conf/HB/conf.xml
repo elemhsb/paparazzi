@@ -1,0 +1,42 @@
+<conf>
+  <aircraft
+   name="F_HBMINI_V2_MAX1168"
+   ac_id="3"
+   airframe="airframes/HB/fixed-wing/f_hbmini_v2_max1168.xml"
+   radio="radios/HB/mc15.xml"
+   telemetry="telemetry/default_fixedwing_imu.xml"
+   flight_plan="flight_plans/HB/stieglitz.xml"
+   settings=" settings/fixedwing_basic.xml"
+   gui_color="#ffff323842f4"
+  />
+  <aircraft
+   name="F_HBMINI_V2_MPU6000"
+   ac_id="4"
+   airframe="airframes/HB/fixed-wing/f_hbmini_v2_mpu6000.xml"
+   radio="radios/HB/mc15.xml"
+   telemetry="telemetry/default_fixedwing_imu.xml"
+   flight_plan="flight_plans/HB/stieglitz.xml"
+   settings=" settings/fixedwing_basic.xml"
+   gui_color="#3fff323842f4"
+  />
+  <aircraft
+   name="R_HBMINI_V2_MAX1168"
+   ac_id="2"
+   airframe="airframes/HB/rotor/r_hbmini_v2_max1168.xml"
+   radio="radios/HB/mc15_kill.xml"
+   telemetry="telemetry/default_rotorcraft.xml"
+   flight_plan="flight_plans/HB/stieglitz.xml"
+   settings=" settings/rotorcraft_basic.xml"
+   gui_color="orange"
+  />
+  <aircraft
+   name="R_HBMINI_V2_MPU6000"
+   ac_id="14"
+   airframe="airframes/HB/rotor/r_hbmini_v2_mpu6000.xml"
+   radio="radios/HB/mc15.xml"
+   telemetry="telemetry/default_rotorcraft.xml"
+   flight_plan="flight_plans/HB/stieglitz.xml"
+   settings=" settings/rotorcraft_basic.xml"
+   gui_color="blue"
+  />
+</conf>
